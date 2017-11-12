@@ -1,0 +1,63 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+int main() {
+	int j, k, r, u = 0, p = 0, l; char f;
+	char m[5][5] = { { 0,0,0,0,0 },{ 0,0,0,0,0 },{ 0,0,0,0,0 },{ 0,0,0,0,0 },{ 0,0,0,0,0 } };
+	for (int y = 0;; y++) {
+		j = 0;
+		cout << "     1" << "   2   " << "3" << "   4   " << "5   " << endl;
+		cout << "   ---------------------" << endl << " a" << " | " << m[0][0] << " | " << m[0][1] << " | " << m[0][2] << " | " << m[0][3] << " | " << m[0][4] << " |" << endl;
+		cout << "   ---------------------" << endl << " b" << " | " << m[1][0] << " | " << m[1][1] << " | " << m[1][2] << " | " << m[1][3] << " | " << m[1][4] << " |" << endl;
+		cout << "   ---------------------" << endl << " c" << " | " << m[2][0] << " | " << m[2][1] << " | " << m[2][2] << " | " << m[2][3] << " | " << m[2][4] << " |" << endl;
+		cout << "   ---------------------" << endl << " d" << " | " << m[3][0] << " | " << m[3][1] << " | " << m[3][2] << " | " << m[3][3] << " | " << m[3][4] << " |" << endl;
+		cout << "   ---------------------" << endl << " e" << " | " << m[4][0] << " | " << m[4][1] << " | " << m[4][2] << " | " << m[4][3] << " | " << m[4][4] << " |" << endl;
+		cout << "   ---------------------" << endl;
+		if (y % 2 == 1) { f = 'X'; } else { f = 'O'; }
+		if (m[0][0] == f && m[1][1] == f && m[2][2] == f && m[3][3] == f && m[4][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][4] == f && m[1][3] == f && m[2][2] == f && m[3][1] == f && m[4][0] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][0] == f && m[1][0] == f && m[2][0] == f && m[3][0] == f && m[4][0] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][1] == f && m[1][1] == f && m[2][1] == f && m[3][1] == f && m[4][1] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][2] == f && m[1][2] == f && m[2][2] == f && m[3][2] == f && m[4][2] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][3] == f && m[1][3] == f && m[2][3] == f && m[3][3] == f && m[4][3] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][4] == f && m[1][4] == f && m[2][4] == f && m[3][4] == f && m[4][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[0][0] == f && m[0][1] == f && m[0][2] == f && m[0][3] == f && m[0][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[1][0] == f && m[1][1] == f && m[1][2] == f && m[1][3] == f && m[1][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[2][0] == f && m[2][1] == f && m[2][2] == f && m[2][3] == f && m[2][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[3][0] == f && m[3][1] == f && m[3][2] == f && m[3][3] == f && m[3][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (m[4][0] == f && m[4][1] == f && m[4][2] == f && m[4][3] == f && m[4][4] == f) { cout << "player " << f << " won" << endl; break; }
+		if (y == 25) { cout << "draw" << endl; break; }
+		for (int i = 0; i < 25; i++) {
+			if (m[i / 5][i % 5] != 'X' && m[i / 5][i % 5] != 'O') {
+				j++;
+				cout << j << ". mark cell ";
+				r = i / 5;
+				switch (r) {
+				case 0: cout << 'a'; break;
+				case 1: cout << 'b'; break;
+				case 2: cout << 'c'; break;
+				case 3: cout << 'd'; break;
+				case 4: cout << 'e'; break;
+				}
+				r = i % 5;
+				switch (r) {
+				case 0: cout << '1' << " as "; break;
+				case 1: cout << '2' << " as "; break;
+				case 2: cout << '3' << " as "; break;
+				case 3: cout << '4' << " as "; break;
+				case 4: cout << '5' << " as "; break;
+				}
+				if (y % 2 == 0) { cout << 'X' << endl; }
+				else { cout << 'O' << endl; }
+			}
+		}
+		cin >> u; p = 0;
+		u -= 1;
+		for (l = 0; p <= u; l++) {
+			if (m[l / 5][l % 5] != 'X' && m[l / 5][l % 5] != 'O') { k = l; p++; }
+		}
+		if (m[k / 5][k % 5] != 'X' && m[k / 5][k % 5] != 'O' && y % 2 == 0) { m[k / 5][k % 5] = 'X'; }
+		else if (m[k / 5][k % 5] != 'X' && m[k / 5][k % 5] != 'O' && y % 2 == 1) { m[k / 5][k % 5] = 'O'; }
+	}
+	return 0;
+}
